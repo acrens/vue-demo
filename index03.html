@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE Demo - 模板语法</title>
+</head>
+<body>
+	<div class="J-dom">
+		<!-- v-once 指令一次性插值 -->
+		<span v-once>{{ message }}</span>
+		<!-- html 属性不能使用 {{}} 语法，必须使用 v-bind 指令 -->
+		<button v-bind:disabled="isDisabled">按钮</button>
+		<!-- 一下为指令缩写 -->
+		<!-- <button :disabled="isDisabled">按钮</button> -->
+		<!-- 过滤器(capitalize 第一个参数总是 message,可以同时使用多个过滤器) -->
+		<span>{{ message | capitalize }}</span>
+		<!-- v-bind 指令，单向绑定 -->
+		<input type="text" name="message1" v-bind:value="message">
+		<!-- v-model 指令，双向绑定 -->
+		<input type="text" name="message2" v-model="message">
+	</div>
+	<script type="text/javascript" src="./lib/vue.js"></script>
+	<script type="text/javascript" src="./src/vue03.js"></script>
+</body>
+</html>
