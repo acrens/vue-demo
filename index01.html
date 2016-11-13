@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>VUE Demo - 介绍</title>
+</head>
+<body>
+	<div class="J-dom">
+		{{ message }}
+		<span v-bind:title="message">检车属性绑定</span>
+		<button v-on:click="reverseMsg">反转字符</button>
+		<input type="text" name="message" v-model="message">
+		<span v-if="seen">if 条件判断</span>
+		<ul>
+			<li v-for="todo in todos">
+				{{ todo }}
+			</li>
+		</ul>
+		<ul>
+			<todo-item v-for="item in items" v-bind:item="item"></todo-item>
+		</ul>
+	</div>
+	<script type="text/javascript" src="./lib/vue.js"></script>
+	<script type="text/javascript" src="./src/vue01.js"></script>
+</body>
+</html>
