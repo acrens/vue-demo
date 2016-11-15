@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VUE Demo - Class 与 Style 绑定 & 条件渲染 & 列表渲染</title>
+    <style type="text/css">
+    	.active {
+    		background-color: #0f0;
+    	}
+    	.text-danger {
+    		color: #f00;
+    	}
+    </style>
+</head>
+
+<body>
+    <div class="J-dom">
+    	<!-- class & style v-bind 特殊性 -->
+    	<span class="static" v-bind:class="{ active: isActive, 'text-danger': hasError }">HTML class 测试</span>
+    	<span class="static" v-bind:class="classObject">HTML class data object 测试</span>
+    	<span class="static" v-bind:class="[activeClass, errorClass]">HTML class array 测试</span>
+    	<span class="static" v-bind:class="[isActive ? activeClass : errorClass]">HTML class if else 测试</span>
+    	<span class="static" v-bind:class="[activeClass , { 'text-danger': hasError }]">HTML class array and object 测试</span>
+    	<p class="static" v-bind:style="styleObject">HTML class data object 测试</p>
+
+    	<!-- 条件渲染 -->
+    	<h1 v-if="ok">OK</h1>
+    	<h1 v-else>NO</h1>
+
+    	<h1 v-show="ok">show OK</h1>
+
+        <!-- 列表渲染 -->
+        <ul>
+            <li v-for="(item, index) in items">
+                {{ index }} - {{ item.text }}
+            </li>
+        </ul>
+        <!-- 对象迭代 -->
+        <ul>
+            <li v-for="(value, key, index) in objs">
+                {{ index }} - {{ key }} - {{ value }}
+            </li>
+        </ul>
+        <!-- 整数迭代 -->
+        <div>
+            <span v-for="n in 20">{{ n }},</span>
+        </div>
+    </div>
+    <div class="J-todos-lst">
+        <input type="text" v-model="newTodoText" v-on:keyup.enter="addNewTodo" placeholder="Add a todo">
+        <ul>
+            <!-- <li is="todo-item" v-for="(todo, index) in todos" v-bind:title="todo" v-on:remove="todos.splice(index, 1)"></li> -->
+            <todo-item v-for="(todo, index) in todos" v-bind:title="todo" v-on:remove="todos.splice(index, 1)"></todo-item>
+        </ul>
+    </div>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+    <script type="text/javascript" src="./src/vue05-component01.js"></script>
+    <script type="text/javascript" src="./src/vue05.js"></script>
+</body>
+
+</html>
