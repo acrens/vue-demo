@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VUE Demo - 事件处理器、表单控件绑定</title>
+</head>
+
+<body>
+    <div class="J-dom">
+    	<button v-on:click="counter += 1">增加 1</button>
+    	<p>此按钮被点击 {{ counter }} 次</p>
+    	<button v-on:click="greet">Greet</button>
+    	<!-- $event 特殊变量传递 event 对象 -->
+    	<button v-on:click="warn('Form cannot be submitted yet.', $event)">Submit</button>
+    	<!-- 时间修饰符 -->
+    	<a href="http://www.baidu.com" v-on:click.prevent="greet">链接</a>
+    	<input type="text" @keyup.enter="submit" placeholder="缩写提交">
+    	<input type="text" v-on:keyup.13="submit" placeholder="正常提交">
+    </div>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+    <script type="text/javascript" src="./src/vue06.js"></script>
+</body>
+
+</html>
