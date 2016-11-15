@@ -17,6 +17,9 @@
     	<a href="http://www.baidu.com" v-on:click.prevent="greet">链接</a>
     	<input type="text" @keyup.enter="submit" placeholder="缩写提交">
     	<input type="text" v-on:keyup.13="submit" placeholder="正常提交">
+
+    	<input type="text" v-model.trim="message">
+    	<p>{{ message }}</p>
     </div>
     <script type="text/javascript" src="./lib/vue.js"></script>
     <script type="text/javascript" src="./src/vue06.js"></script>
