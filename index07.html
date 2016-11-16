@@ -12,7 +12,28 @@
         <component02 result="you are bitch"></component02>
         <component02 :dynamic-result="message"></component02>
         <input type="text" v-model="message">
+
+        <!-- 动态组件 -->
+        <component v-bind:is="currentView"></component>
+        <hello-world></hello-world>
     </div>
+
+    <!-- $on(eventName) 监听事件、$emit(eventName) 触发事件 -->
+    <div id="counter-event-example">
+        <p>{{ total }}</p>
+        <button-counter v-on:increments="incrementTotal"></button-counter>
+        <button-counter v-on:increments="incrementTotal"></button-counter>
+    </div>
+
+    <div id="v-model-example">
+        <p>{{ message }}</p>
+        <my-input label="Message" v-model="message"></my-input>
+    </div>
+    
+    <!-- 模板 -->
+    <script type="text/x-template" id="hello-world-template">
+        <p>Hello hello hello</p>
+    </script>
     <script type="text/javascript" src="./lib/vue.js"></script>
     <script type="text/javascript" src="./src/vue07.js"></script>
 </body>
