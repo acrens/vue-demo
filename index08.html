@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VUE Demo - 深入响应式原理、过渡效果、过渡状态</title>
+    <style type="text/css">
+    /*
+    1、v-enter: 定义进入过渡的开始状态。在元素被插入时生效，在下一个帧移除。
+    2、v-enter-active: 定义进入过渡的结束状态。在元素被插入时生效，在 transition/animation 完成之后移除。
+    3、v-leave: 定义离开过渡的开始状态。在离开过渡被触发时生效，在下一个帧移除。
+    4、v-leave-active: 定义离开过渡的结束状态。在离开过渡被触发时生效，在 transition/animation 完成之后移除。
+    注：v 被 transition 的 name 替换，如下：fade-enter、fade-enter-active、fade-leave、fade-leave-active。
+     */
+    
+    */ .fade-enter-active,
+    .fade-leave-active {
+        transition: opacity .5s
+    }
+    
+    .fade-enter,
+    .fade-leave-active {
+        opacity: 0
+    }
+    
+    .list-item {
+        transition: all 1s;
+        display: inline-block;
+        margin-right: 10px;
+    }
+    
+    .list-enter-active,
+    .list-leave-active {
+        transition: all 1s;
+    }
+    
+    .list-enter,
+    .list-leave-active {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+
+    .list-leave-active {
+        position: absolute;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="J-dom">
+        {{ message }}
+        <!-- 过度 -->
+        <button v-on:click="show = !show">Toggle</button>
+        <!-- 过度方式执行顺序：1、CSS 过渡或动画；2、钩子函数；3、DOM 操作。 -->
+        <transition name="fade">
+            <p v-if="show">hello acrens</p>
+        </transition>
+        <button @click="hide = !hide">钩子 Toggle</button>
+        <transition v-on:before-enter="beforeEnter" v-on:enter="enter" v-on:leave="leave" v-bind:css="false">
+            <p v-if="hide">星星</p>
+        </transition>
+    </div>
+    
+    <!-- transition-group 一组数据过度（如列表） -->
+    <div id="list-demo" class="demo">
+        <button v-on:click="add">Add</button>
+        <button v-on:click="remove">Remove</button>
+        <transition-group name="list" tag="p">
+            <span v-for="item in items" v-bind:key="item" class="list-item">
+                {{ item }}
+            </span>
+        </transition-group>
+    </div>
+
+    <!-- 过度状态 -->
+    
+    <script type="text/javascript" src="./lib/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+    <script type="text/javascript" src="./src/vue08.js"></script>
+</body>
+
+</html>
