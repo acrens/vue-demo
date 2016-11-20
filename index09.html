@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VUE Demo - Render 函数、自定义指令</title>
+</head>
+
+<body>
+    <div class="J-dom">
+        <anchored-heading :level="1">Hello world!</anchored-heading>
+
+        <!-- 自定义指令 -->
+        <input type="text" v-focus>
+        <div id="hook-arguments-example" v-demo:hello.a.b="message"></div>
+    </div>
+    <script type="text/javascript" src="./lib/vue.js"></script>
+    <script type="text/javascript" src="./src/vue09.js"></script>
+</body>
+
+</html>
