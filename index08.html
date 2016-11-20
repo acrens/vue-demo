@@ -72,10 +72,14 @@
         </transition-group>
     </div>
 
-    <!-- 过度状态 -->
-    
+    <!-- 过渡状态 -->
+    <div id="animated-number-demo">
+        <input v-model.number="number" type="number" step="20">
+        <p>{{ animatedNumber }}</p>
+    </div>
     <script type="text/javascript" src="./lib/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+    <script src="https://unpkg.com/tween.js"></script>
     <script type="text/javascript" src="./src/vue08.js"></script>
 </body>
 

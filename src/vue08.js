@@ -60,3 +60,32 @@ var vm1 = new Vue({
         },
     }
 });
+
+// 过渡状态渲染
+var vm2 = new Vue({
+    el: '#animated-number-demo',
+    data: {
+        number: 0,
+        animatedNumber: 0
+    },
+    watch: {
+        number: function(newValue, oldValue) {
+            var vm = this
+
+            function animate(time) {
+                requestAnimationFrame(animate)
+                TWEEN.update(time)
+            }
+
+            new TWEEN.Tween({ tweeningNumber: oldValue })
+                .easing(TWEEN.Easing.Quadratic.Out)
+                .to({ tweeningNumber: newValue }, 5000)	// 5s 内到达指定值
+                .onUpdate(function() {
+                    vm.animatedNumber = this.tweeningNumber.toFixed(0)
+                })
+                .start();
+
+            animate()
+        }
+    }
+});
