@@ -2,6 +2,11 @@
 <html>
 <head>
 	<title>Vue API 练习</title>
+	<style type="text/css">
+		[v-cloak] {
+			display: none;
+		}
+	</style>
 </head>
 <body>
 	<div class="J-dom">
@@ -10,6 +15,14 @@
 
 		<!-- 组件 -->
 		<div id="J-extend-component"></div>
+
+		<!-- 指令 -->
+		<p v-text="message"></p>
+		<p>{{ message }}</p>
+		<span v-pre>{{ this will not be compiled }}</span>
+		<div v-cloak>
+			{{ message }}
+		</div>
 	</div>
 
 	<div class="J-dom1"></div>
